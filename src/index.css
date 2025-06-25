@@ -1,0 +1,124 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+    background: black;
+    color: white;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    align-items: center;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile {
+    width: 150px;
+    height: 150px;
+    border-radius: 10%;
+    object-fit: cover;
+}
+
+.title .name {
+    margin: 5px 0;
+    display: block;
+}
+
+.name {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.title {
+    font-size: 1rem;
+    font-weight: 400;
+    text-align: center;
+    margin: 10px 0;
+}
+
+.details {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    flex-direction: column;
+}
+
+.buttons {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.buttons span {
+    margin: 0 10px;
+}
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #3a3d42;
+    color: white;
+    border: none;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 10px;
+    padding: 0;
+    margin: 20px 5px 0 5px;
+    min-width: 40px;
+    min-height: 40px;
+}
+
+.button:hover {
+    background: #4a4d52;
+}
+
+.button img {
+    max-width: 2.5rem;
+    max-height: 1.3rem;
+    object-fit: contain;
+    vertical-align: middle;
+    line-height: 1.3rem; /* vertical centering */
+    padding: 2px 5px;
+}
+
+.header .button {
+    background-color: white;
+    color: black;
+    width: 4.2rem;
+    height: 2rem;
+}
+
+.header .button:hover {
+    background-color: #f0f0f0;
+}
+
+.subtitle {
+    font-size: 2rem;
+    margin: 20px 0;
+    text-align: left;
+}
+
+.text {
+    font-size: 1rem;
+    margin: 10px 0;
+    text-align: left;
+}
