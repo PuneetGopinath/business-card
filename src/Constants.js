@@ -1,4 +1,5 @@
-const url = "https://cdn.jsdelivr.net/npm/simple-icons@v15/icons/";
+const url = "https://cdn.simpleicons.org/";
+const color = "/white";
 
 export default {
     name: "Puneet Gopinath",
@@ -15,11 +16,11 @@ export default {
         email: "mailto:puneet2007@icloud.com"
     },
     icons:{
-        x: url + "x.svg",
-        facebook: url + "facebook.svg",
-        instagram: url + "instagram.svg",
-        github: url + "github.svg",
+        x: url + "x" + color,
+        facebook: url + "facebook" + color,
+        instagram: url + "instagram" + color,
+        github: url + "github" + color,
         linkedin: "/src/images/linkedin.png",
-        email: url + "gmail.svg"
+        email: url + "gmail" + color
     }
 }
