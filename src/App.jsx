@@ -15,6 +15,7 @@ export default function App() {
             <Routes>
                 <Route path="/" element={<Card {...c} />} />
                 <Route path="/generate" element={<Gen />} />
+                <Route path="/card" element={<Card useLocalStorage={true} />} />
                 <Route path="*" element={<h1>404 Not Found</h1>} />
             </Routes>
         </BrowserRouter>

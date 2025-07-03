@@ -19,6 +19,18 @@ export default function Gen() {
         for (const key in data) {
             localStorage.setItem(`cardGen.${key}`, data[key]);
         }
+
+        if (!data.linkedin)
+            localStorage.setItem("cardGen.linkedin", "https://linkedin.com/");
+        if (!data.x)
+            localStorage.setItem("cardGen.x", "https://x.com/");
+        if (!data.facebook)
+            localStorage.setItem("cardGen.facebook", "https://facebook.com/");
+        if (!data.instagram)
+            localStorage.setItem("cardGen.instagram", "https://instagram.com/");
+        if (!data.github)
+            localStorage.setItem("cardGen.github", "https://github.com");
+        window.location.href = "/card";
     };
 
     return (
@@ -34,11 +46,32 @@ export default function Gen() {
                 <label>Enter your tagline:</label>
                 <input type="text" name="tagline" placeholder="Your Tagline" required />
 
+                <label>Provide a link to your profile:</label>
+                <input type="url" name="profile" placeholder="https://you.com/profile.jpg" required />
+
                 <lable>Enter your content for the 'About' section:</lable>
                 <textarea name="about" placeholder="About You" required />
 
                 <label>Enter your interests:</label>
                 <input type="text" name="interests" placeholder="Your Interests" required />
+
+                <div className="social-links">
+                    <h3>Social Accounts</h3>
+                    <label className="social-label">LinkedIn:</label>
+                    <input type="url" name="linkedin" placeholder="https://linkedin.com/in/yourprofile" />
+                    <label className="social-label">X:</label>
+                    <input type="url" name="x" placeholder="https://x.com/yourprofile" />
+                    <label className="social-label">Facebook:</label>
+                    <input type="url" name="facebook" placeholder="https://facebook.com/yourprofile" />
+                    <label className="social-label">Instagram:</label>
+                    <input type="url" name="instagram" placeholder="https://instagram.com/yourprofile" />
+                    <label className="social-label">GitHub:</label>
+                    <input type="url" name="github" placeholder="https://github.com/yourprofile" />
+                </div>
+
+                <label>Enter your email:</label>
+                <small>For your client's contact purpose</small>
+                <input type="email" name="email" placeholder="Enter your email" required />
 
                 <button type="submit">Generate Card</button>
             </form>
