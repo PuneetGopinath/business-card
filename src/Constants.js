@@ -4,7 +4,8 @@ const color = "/white";
 export default {
     name: "Puneet Gopinath",
     title: "AI Developer",
-    about: "GSoC'26 Aspirant | Intern@Scalar School of Tech. | Fresher at VIT Vellore (B.Tech CSE)",
+    tagline: "GSoC'26 Aspirant | Intern@Scalar School of Tech. | Fresher at VIT Vellore (B.Tech CSE)",
+    about: "A developer, designer, and digital timekeeper. When I’m not coding, I’m probably sketching ideas, chasing clean UI, or thinking about how software can feel more human.",
     interests: "Coding | AI | Open Source | Tech Communities",
     profile: "/src/images/profile.png",
     social: {
