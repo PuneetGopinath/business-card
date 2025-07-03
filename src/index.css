@@ -8,26 +8,27 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(to bottom right, #f7f7f7, #e0e0e0);
+    font-family: "Inter", sans-serif;
+    background: #f7f7f7;
 }
 
-#root {
+main.card {
     display: flex;
     flex-direction: column;
     background: #1a1a1a;
     color: white;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
     padding: 0;
-    border-radius: 15px;
+    margin: 10px;
+    border-radius: 12px;
     text-align: center;
     align-items: center;
-    max-width: 19rem;
+    max-width: 16rem;
     width: 100%;
     overflow: hidden;
 }
 
-.header {
+.top {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -44,19 +45,30 @@ body {
 }
 
 .name {
-    font-size: 1.2rem;
+    font-size: 0.9rem;
     font-weight: bold;
     letter-spacing: 1px;
     margin: 2px 0;
     display: block;
 }
 
-.title {
-    font-size: 0.75rem;
+.title,
+.tagline {
+    font-size: 0.6rem;
     font-weight: 400;
     text-align: center;
-    margin: 5px 0;
+}
+
+.title {
+    margin: 4px 0;
     color: #cccccc;
+}
+
+.tagline {
+    font-style: italic;
+    color: #999999;
+    margin: 2px 0;
+    max-width: 90%;
 }
 
 .details {
@@ -88,11 +100,9 @@ body {
     border-radius: 8px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    font-size: 0.7rem;
-    padding: 0.25rem 0.5rem;
+    font-size: 0.5rem;
+    padding: 0.2rem 0.4rem;
     margin: 10px 3px 0 3px;
-    min-width: 30px;
-    min-height: 30px;
 }
 
 .button:hover {
@@ -105,21 +115,20 @@ body {
     vertical-align: middle;
     line-height: 1.3rem; /* vertical centering */
     padding: 2px 5px;
-    width: 1.5rem;
-    height: 1.5rem;
+    width: 1.2rem;
+    height: 1.2rem;
     /* filter: brightness(0) invert(1); inverts color of icons */
 }
 
-.header .button {
-    width: 5rem;
-    height: 2rem;
+.top .button {
+    width: 4.3rem;
+    height: auto;
+    min-width: 3rem;
+    max-width: 100%;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     padding: 0.3rem 0.6rem;
-    height: auto;
-    min-width: 4.2rem;
-    max-width: 100%;
     overflow: hidden;
     white-space: nowrap;
 }
@@ -129,17 +138,17 @@ body {
 }
 
 .subtitle {
-    font-size: 1.1rem;
+    font-size: 0.9rem;
     margin: 5px 0 10px 0;
     text-align: left;
 }
 
 .text {
-    font-size: 0.7rem;
+    font-size: 0.65rem;
     margin: 10px 0;
     text-align: left;
 }
 
-.footer {
+.bottom {
     margin-bottom: 5px;
 }
