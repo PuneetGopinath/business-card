@@ -14,8 +14,8 @@ import Gmail from "../images/gmail.svg?react";
 import LinkedIn from "../images/linkedin.svg?react";
 
 export default function Card(props) {
-    let data = { ...props };
-    if (props.useLocalStorage) {
+    let data;
+    if (props.export) {
         data = {
             name: localStorage.getItem("cardGen.name") || c.name,
             title: localStorage.getItem("cardGen.title") || c.title,
@@ -32,7 +32,8 @@ export default function Card(props) {
                 github: localStorage.getItem("cardGen.github") || c.social.github
             },
         };
-    }
+    } else
+        data = { ...c };
 
     const [ exportType, setExportType ] = useState("pdf");
 
@@ -121,7 +122,7 @@ export default function Card(props) {
                 </section>
             </div>
 
-            <div className="export-info">
+            {props.export ? <div className="export-info">
                 <h1>Export your Business Card</h1>
                 <p>
                     You're all set—your card is now previewed with your personalized details, profile image, and social links.
@@ -142,7 +143,7 @@ export default function Card(props) {
                 >
                     Export
                 </button>
-            </div>
+            </div> : null}
         </main>
     );
 };

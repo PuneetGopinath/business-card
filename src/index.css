@@ -9,6 +9,82 @@ body {
     background: #f7f7f7;
 }
 
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: #1a1a1a;
+    color: #f7f7f7;
+    border-bottom: 1px solid #333;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.nav-link {
+    color: #88c0d0;
+    text-decoration: none;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+}
+
+.nav-link:hover {
+    background: #272727;
+}
+
+.home {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3rem;
+    padding: 1rem 2rem;
+    background-color: #fefefe;
+    min-height: 100vh;
+}
+
+.home .card-container {
+    padding: 0;
+}
+
+.intro {
+    max-width: 500px;
+}
+
+.intro h1 {
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+    color: #222;
+}
+
+.intro p {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 2rem;
+}
+
+.cta {
+    background: #1a1a1a;
+    color: white;
+    font-weight: bold;
+    border: none;
+    padding: 0.7rem 1.2rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.cta:hover {
+    background: #333;
+}
+
 .card-container {
     display: flex;
     align-items: flex-start;
@@ -162,12 +238,14 @@ small {
 
 .main {
     margin: 5px 10px;
+    width: 100%;
+    padding: 0 10px;
+    text-align: justify;
 }
 
 .subtitle {
     font-size: 0.9rem;
     margin: 5px 0 10px 0;
-    text-align: left;
 }
 
 .text {
@@ -236,4 +314,28 @@ button:hover {
         align-items: center;
         margin-top: 1rem;
     }
+}
+
+.footer {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 1rem 2rem;
+    background-color: #1a1a1a;
+    color: #ddd;
+    font-size: 0.8rem;
+    border-top: 1px solid #333;
+}
+
+.footer p {
+    margin: 0.5rem 0;
+}
+
+.footer a {
+    color: #88c0d0;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline;
 }
