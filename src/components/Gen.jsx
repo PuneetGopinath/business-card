@@ -4,14 +4,8 @@ import "../gen.css";
 
 export default function Gen() {
     useEffect(() => {
-        const link = document.createElement("link");
-        link.rel = "stylesheet";
-        link.href = "/gen.css";
-
-        document.head.appendChild(link);
-        return () => {
-            document.head.removeChild(link);
-        };
+        document.body.classList.add("gen");
+        return () => document.body.classList.remove("gen");
     });
 
     const handleSubmit = (event) => {
@@ -89,7 +83,7 @@ export default function Gen() {
                 <small>For your client's contact purpose</small>
                 <input type="email" name="email" placeholder="Enter your email" required />
 
-                <button type="submit">Generate Card</button>
+                <button type="submit" className="submit">Generate Card</button>
             </form>
         </main>
     );

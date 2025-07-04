@@ -209,6 +209,21 @@ select {
     max-width: 20rem;
 }
 
+button {
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: #007bffe0;
+    color: white;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #005bb5;
+}
+
 @media (max-width: 600px) {
     .card-container {
         flex-direction: column;
