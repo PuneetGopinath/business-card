@@ -9,14 +9,30 @@ export default function Gen() {
         link.href = "/gen.css";
 
         document.head.appendChild(link);
+        return () => {
+            document.head.removeChild(link);
+        };
     });
 
     const handleSubmit = (event) => {
         event.preventDefault();
 
+        const maxSize = 500 * 1024; // 500 KB
+
         const formData = new FormData(event.target);
         const data = Object.fromEntries(formData.entries());
+
         for (const key in data) {
+            if (key === "profile") {
+                if (data[key].size > maxSize)
+                    return alert("Profile image size exceeds 500 KB. Please upload a smaller image.");
+                const reader = new FileReader();
+                reader.onload = () => {
+                    localStorage.setItem(`cardGen.${key}`, reader.result);
+                };
+                reader.readAsDataURL(data[key]);
+                continue;
+            }
             localStorage.setItem(`cardGen.${key}`, data[key]);
         }
 
@@ -46,8 +62,8 @@ export default function Gen() {
                 <label>Enter your tagline:</label>
                 <input type="text" name="tagline" placeholder="Your Tagline" required />
 
-                <label>Provide a link to your profile:</label>
-                <input type="url" name="profile" placeholder="https://you.com/profile.jpg" required />
+                <label>Upload your profile image:</label>
+                <input type="file" name="profile" accept="image/*" required />
 
                 <lable>Enter your content for the 'About' section:</lable>
                 <textarea name="about" placeholder="About You" required />
