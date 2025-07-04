@@ -11,7 +11,7 @@ export default function Gen() {
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        const maxSize = 500 * 1024; // 500 KB
+        const maxSize = 1000 * 1024; // 1 MB
 
         const formData = new FormData(event.target);
         const data = Object.fromEntries(formData.entries());
