@@ -102,7 +102,7 @@ export default function Card(props) {
                     </div>
                     <div className="buttons" >
                         <a href={data.linkedin}><span className="button"><LinkedIn />LinkedIn</span></a>
-                        <a href={data.email}><span className="button"><Gmail />Email</span></a>
+                        <a href={`mailto:${data.email}`}><span className="button"><Gmail />Email</span></a>
                     </div>
                 </section>
                 <section className="main">
