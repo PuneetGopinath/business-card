@@ -1,6 +1,6 @@
 import { useState } from "react";
 import html2pdf from "html2pdf.js";
-import html2canvas from "html2canvas";
+import * as htmlToImage from "html-to-image";
 
 import styles from "../index.css?raw";
 
@@ -38,13 +38,14 @@ export default function Card(props) {
     const [ exportType, setExportType ] = useState("pdf");
 
     const handleExport = () => {
-        const svgElements = document.querySelectorAll("svg");
-        svgElements.forEach(item => {
+        //const svgElements = document.querySelectorAll("svg");
+        /*svgElements.forEach(item => {
             item.setAttribute("width", item.getBoundingClientRect().width);
             item.setAttribute("height", item.getBoundingClientRect().height);
             item.style.width = null;
-            item.style.height= null;
-        });
+            item.style.height = null;
+        });*/
+
         switch (exportType) {
             case "pdf": {
                 const el = document.querySelector(".card");
@@ -61,17 +62,33 @@ export default function Card(props) {
             }
             case "png":
             case "jpeg": {
-                const el = document.querySelector(".card");
-                html2canvas(el, {
-                    useCORS: true,
-                    allowTaint: false,
-                    scale: 2
-                }).then((canvas) => {
+                const el = document.querySelector(".card-print");
+                const width  = el.offsetWidth;
+                const height = el.offsetHeight;
+                const links = Array.from(document.querySelectorAll('link[rel="stylesheet"]'));
+                const disabled = links.filter(link => new URL(link.href).origin !== window.location.origin)
+                                    .map(link => (link.disabled = true, link));
+                const handleDownload = (dataUrl) => {
                     const link = document.createElement("a");
                     link.download = `${data.name.split(" ").join("-").toLowerCase()}-business-card.${exportType}`;
-                    link.href = canvas.toDataURL(`image/${exportType}`);
+                    link.href = dataUrl;
                     link.click();
-                });
+                    disabled.forEach(link => link.disabled = false);
+                };
+                const props ={
+                    cacheBust: true,
+                    quality: 0.98,
+                    width,
+                    height,
+                    style: {
+                        transform: "scale(1)",
+                        transformOrigin: "top left",
+                    },
+                };
+                if (exportType === "png")
+                    htmlToImage.toPng(el, props).then(handleDownload);
+                else
+                    htmlToImage.toJpeg(el, props).then(handleDownload);
                 break;
             }
             case "html": {
@@ -89,37 +106,39 @@ export default function Card(props) {
 
     return (
         <main className="card-container">
-            <div className="card">
-                <section className="top">
-                    <img
-                        src={data.profile}
-                        alt="Profile"
-                        className="profile"
-                    />
-                    <div className="details">
-                        <span className="name">{data.name}</span>
-                        <span className="title">{data.title}</span>
-                        <span className="tagline">{data.tagline}</span>
-                    </div>
-                    <div className="buttons" >
-                        <a href={data.linkedin}><span className="button"><LinkedIn />LinkedIn</span></a>
-                        <a href={`mailto:${data.email}`}><span className="button"><Gmail />Email</span></a>
-                    </div>
-                </section>
-                <section className="main">
-                    <p className="subtitle">About</p>
-                    <p className="text">{data.about}</p>
-                    <p className="subtitle">Interests</p>
-                    <p className="text">{data.interests}</p>
-                </section>
-                <section className="bottom">
-                    <div className="buttons" >
-                        <a href={data.social.x}><span className="button"><X className="icon" /></span></a>
-                        <a href={data.social.facebook}><span className="button"><Facebook className="icon" /></span></a>
-                        <a href={data.social.instagram}><span className="button"><Instagram className="icon" /></span></a>
-                        <a href={data.social.github}><span className="button"><Github className="icon" /></span></a>
-                    </div>
-                </section>
+            <div className="card-print">
+                <div className="card">
+                    <section className="top">
+                        <img
+                            src={data.profile}
+                            alt="Profile"
+                            className="profile"
+                        />
+                        <div className="details">
+                            <span className="name">{data.name}</span>
+                            <span className="title">{data.title}</span>
+                            <span className="tagline">{data.tagline}</span>
+                        </div>
+                        <div className="buttons" >
+                            <a href={data.linkedin}><span className="button"><LinkedIn />LinkedIn</span></a>
+                            <a href={`mailto:${data.email}`}><span className="button"><Gmail />Email</span></a>
+                        </div>
+                    </section>
+                    <section className="main">
+                        <p className="subtitle">About</p>
+                        <p className="text">{data.about}</p>
+                        <p className="subtitle">Interests</p>
+                        <p className="text">{data.interests}</p>
+                    </section>
+                    <section className="bottom">
+                        <div className="buttons" >
+                            <a href={data.social.x}><span className="button"><X className="icon" /></span></a>
+                            <a href={data.social.facebook}><span className="button"><Facebook className="icon" /></span></a>
+                            <a href={data.social.instagram}><span className="button"><Instagram className="icon" /></span></a>
+                            <a href={data.social.github}><span className="button"><Github className="icon" /></span></a>
+                        </div>
+                    </section>
+                </div>
             </div>
 
             {props.export ? <div className="export-info">
