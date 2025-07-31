@@ -1,5 +1,5 @@
 import { useState } from "react";
-import html2pdf from "html2pdf.js";
+//import html2pdf from "html2pdf.js";
 import * as htmlToImage from "html-to-image";
 
 import styles from "../index.css?raw";
@@ -35,7 +35,7 @@ export default function Card(props) {
     } else
         data = { ...c };
 
-    const [ exportType, setExportType ] = useState("pdf");
+    const [ exportType, setExportType ] = useState("html");
 
     const handleExport = () => {
         //const svgElements = document.querySelectorAll("svg");
@@ -47,7 +47,7 @@ export default function Card(props) {
         });*/
 
         switch (exportType) {
-            case "pdf": {
+            /*case "pdf": {
                 const el = document.querySelector(".card");
                 const options = {
                     margin: 0.5,
@@ -59,7 +59,7 @@ export default function Card(props) {
 
                 html2pdf().set(options).from(el).save();
                 break;
-            }
+            }*/
             case "png":
             case "jpeg": {
                 const el = document.querySelector(".card-print");
@@ -146,12 +146,12 @@ export default function Card(props) {
                 <p>
                     You're all set—your card is now previewed with your personalized details, profile image, and social links.
                     <br />
-                    Choose your preferred format and click export to save or share your card. Whether it's a static image for quick sharing or a PDF with clickable links, it's ready to go wherever you want to take it.
+                    Choose your preferred format and click export to save or share your card. Whether it's a static image for quick sharing or a HTML file with clickable links, it's ready to go wherever you want to take it.
                 </p>
 
-                {["jpeg", "png"].includes(exportType) ? <><small>Note: ⚠️ Image downloads (PNG/JPG) are static—links won't be clickable. For interactive cards, try exporting as PDF or HTML.</small></> : null}
+                {["jpeg", "png"].includes(exportType) ? <><small>Note: ⚠️ Image downloads (PNG/JPG) are static—links won't be clickable. For interactive cards, try exporting as HTML.</small></> : null}
                 <select name="exportType" className="type" value={exportType} onChange={(e) => setExportType(e.target.value)}>
-                    <option value="pdf">PDF — Best for printing + clickable links</option>
+                    {/*<option value="pdf">PDF — Best for printing + clickable links</option>*/}
                     <option value="png">PNG — Static image</option>
                     <option value="jpeg">JPG/JPEG — Static image</option>
                     <option value="html">HTML — Interactive format</option>
