@@ -6,7 +6,6 @@ Create beautiful, customizable digital business cards right in your browser—an
 
 - 🎨 Responsive card layout with profile image, name, title, tagline, bio & social links
 - 📦 Export options:
-    - PDF: clickable links, perfect for print or sharing
     - PNG & JPEG: static image snapshots
     - HTML: interactive standalone card with styles embedded
 - 💾 LocalStorage support for persistent user data
